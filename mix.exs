@@ -35,7 +35,7 @@ defmodule GraphqlDemo.Mixfile do
     [
       {:absinthe, "~> 1.3.1"},
       {:absinthe_plug, "~> 1.3.0"},
-      {:poison, "~> 1.3.0"},
+      {:poison, "~> 3.0"},
       {:phoenix, "~> 1.3.0"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},

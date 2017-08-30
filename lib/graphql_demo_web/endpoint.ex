@@ -1,16 +1,6 @@
 defmodule GraphqlDemoWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :graphql_demo
 
-  socket "/socket", GraphqlDemoWeb.UserSocket
-
-  # Serve at "/" the static files from "priv/static" directory.
-  #
-  # You should set gzip to true if you are running phoenix.digest
-  # when deploying your static files in production.
-  plug Plug.Static,
-    at: "/", from: :graphql_demo, gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
-
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
@@ -23,7 +13,7 @@ defmodule GraphqlDemoWeb.Endpoint do
   plug Plug.Logger
 
   plug Plug.Parsers,
-    parsers: [:urlencoded, :multipart, :json],
+    parsers: [:urlencoded, :multipart, :json, Absinthe.Plug.Parser],
     pass: ["*/*"],
     json_decoder: Poison
 
@@ -38,7 +28,8 @@ defmodule GraphqlDemoWeb.Endpoint do
     key: "_graphql_demo_key",
     signing_salt: "PfIM1UCY"
 
-  plug GraphqlDemoWeb.Router
+  plug Absinthe.Plug.GraphiQL, schema: GraphqlDemo.Schema
+  # plug GraphqlDemoWeb.Router
 
   @doc """
   Callback invoked for dynamically configuring the endpoint.
