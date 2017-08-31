@@ -29,7 +29,6 @@ defmodule GraphqlDemoWeb.Endpoint do
     signing_salt: "PfIM1UCY"
 
   plug Absinthe.Plug.GraphiQL, schema: GraphqlDemo.Schema
-  # plug GraphqlDemoWeb.Router
 
   @doc """
   Callback invoked for dynamically configuring the endpoint.
