@@ -26,7 +26,7 @@ defmodule GraphqlDemo.Schema do
   object :queue_mutation do
     @desc "Enqueue an item"
     field :enqueue, non_null(:queue) do
-      arg :item, :integer, description: "Item to enqueue"
+      arg :item, non_null(:integer), description: "Item to enqueue"
       resolve fn %{item: item}, _ -> {:ok, Queue.enqueue(item)} end
     end
 
